@@ -17,7 +17,7 @@ class Pessoa:
         else:
             print(f"{self.nome} parou de comer {comida}.")
             self.comendo = False
-
+# so pode falar se não estiver comendo!!!
     def falar(self):
         if self.falando == True:
             print(f"{self.nome} já estava falando")

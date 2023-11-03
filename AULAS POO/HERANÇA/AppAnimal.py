@@ -2,8 +2,8 @@ from BibliotecaAnimal import *
 cicero = Gato("Cicero", "Loiro bronze")
 vicente = Gato("Vicente", "Preto")
 zeus = Cachorro("Zeus", "Preto e Loiro")
-bellynha = Vaca("Isa", "Branca, eu acho")
-jurandir = Coelho("Icaro", "Bronzeado")
+bellynha = Vaca("Bellynha", "Branca, eu acho")
+jurandir = Coelho("Jurandir", "Bronzeado")
 
 cicero.emitirSom()
 vicente.comer()

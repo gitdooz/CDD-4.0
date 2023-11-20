@@ -1,65 +1,101 @@
 from BancoDeDados import *
+import os
+cursor = banco.cursor()
 
-def inserirAluno():
-    nome = input('DIGITE O NOME DO ALUNO: ')
-    cpf = input('DIGITE O CPF DO ALUNO: ')
-    telefone = input('DIGITE O TELEFONE DO ALUNO: ')
-    endereco = input('DIGITE O ENDERECO DO ALUNO: ')
-    email = input('DIGITE O EMAIL DO ALUNO: ')
-    return nome, cpf, telefone, endereco, email
+
+def inserirAluno(nome, cpf, telefone, email, endereco):
+    cadastro_aluno = 'insert into alunos (nome, cpf, telefone, email, endereco) values (%s, %s, %s, %s,%s);'
+    data = (nome, cpf, telefone, email, endereco)
+    cursor.execute(cadastro_aluno, data)
+    banco.commit()
+    os.system('cls')
+    print('\nAluno cadastrado com sucesso.')
+
 
 def deletarAluno(matricula):
-    mtrcl = matricula
-    deletar_aluno = 'delete from alunos where matricula = (%s);'
-    cursor.execute(deletar_aluno, mtrcl)
+    deletar_aluno = f'DELETE FROM alunos WHERE matricula = "{matricula}"'
+    cursor.execute(deletar_aluno)
+    banco.commit()
+    os.system('cls')
+    print('\nAluno deletado com sucesso.')
 
 def mostrarDadosAluno():
-    comando = 'select * from alunos'
-    return comando
+    consulta_aluno = 'SELECT * FROM alunos;'
+    cursor.execute(consulta_aluno)
+    resultado = cursor.fetchall()
+    for x in resultado:
+        print(x)
 
-def inserirFuncionario():
-    nome = input('DIGITE O NOME DO FUNCIONÁRIO: ')
-    id_funcionario = input('DIGITE O ID DO FUNCIONÁRIO: ')
-    cpf = input('DIGITE O CPF DO FUNCIONÁRIO: ')
-    departamento = int(input('DIGITE O DEPARTAMENTO DO FUNCIONÁRIO: '))
-    return nome, id_funcionario, cpf, departamento
+
+def inserirFuncionario(nome, cpf_funcionario, departamento, salario):
+    cadastro_funcionario = ('insert into funcionarios (nome, cpf_funcionario, departamento, salario) '
+                            'values (%s, %s, %s, %s);')
+    data = (nome, cpf_funcionario, departamento, salario)
+    cursor.execute(cadastro_funcionario, data)
+    banco.commit()
+    os.system('cls')
+    print('\nFuncionario cadastrado com sucesso.')
+
 
 def deletarFuncionario(id_funcionario):
-    id = id_funcionario
-    deletar_funcionario = 'delete from funcionarios where id_funcionario = (%s);'
-    cursor.execute(deletar_funcionario, id)
+    deletar = f'DELETE FROM func WHERE id_funcionario = "{id_funcionario}"'
+    cursor.execute(deletar)
+    banco.commit()
+    os.system('cls')
+    print('Funcionário deletado com sucesso.')
+
 
 def mostrarDadosFuncionario():
-    comando = 'select * from funcionarios'
-    return comando
+    consulta_funcionario = 'SELECT * FROM funcionarios;'
+    cursor.execute(consulta_funcionario)
+    resultado = cursor.fetchall()
+    for x in resultado:
+        print(x)
 
-def inserirModalidade():
-    id_mod = int(input('DIGITE O ID DA MODALIDADE: '))
-    nome = input('DIGITE O NOME DO FUNCIONÁRIO: ')
-    return id_mod, nome
+
+def inserirModalidade(nome):
+    cadastro_modalidade = f'INSERT into modalidades (nome) VALUES ("{nome}");'
+    cursor.execute(cadastro_modalidade)
+    banco.commit()
+    os.system('cls')
+    print('\nModalidade cadastrada com sucesso.')
+
 
 def deletarModalidade(id_mod):
-    id_M = id_mod
-    deletar_modalidade = 'delete from modalidades where id_mod = (%s);'
-    cursor.execute(deletar_modalidade, id_M)
+    deletar = f'DELETE FROM modalidades WHERE id_mod = "{id_mod}"'
+    cursor.execute(deletar)
+    banco.commit()
+    os.system('cls')
+    print('Modalidade deletada')
 
 def mostrarDadosModalidade():
-    comando = 'select * from modalidades'
-    return comando
+    consulta_modalidades = 'SELECT * FROM modalidades;'
+    cursor.execute(consulta_modalidades)
+    resultado = cursor.fetchall()
+    for x in resultado:
+        print(x)
 
-def inserirPersonal():
-    nome = input('DIGITE O NOME DO PERSONAL: ')
-    cpf = input('DIGITE O CPF DO PERSONAL: ')
-    cref = input('DIGITE O CREF DO PERSONAL: ')
-    telefone = input('DIGITE O TELEFONE DO PERSONAL: ')
-    email = input('DIGITE O EMAIL DO PERSONAL: ')
-    return nome, cpf, cref, telefone, email
+
+
+def inserirPersonal(cpf, cref, nome, telefone, email):
+    cadastro_personal = 'insert into personal (cpf, cref, nome, telefone, email) values (%s, %s, %s, %s,%s);'
+    data = (cpf, cref, nome, telefone, email)
+    cursor.execute(cadastro_personal, data)
+    banco.commit()
+    os.system('cls')
+    print('Personal cadastradoa com sucesso.')
 
 def deletarPersonal(cpf):
-    cpf_personal = cpf
-    deletar_personal = 'delete from personal where cpf = (%s);'
-    cursor.execute(deletar_personal, cpf_personal)
+    deletar = f'DELETE FROM personal WHERE cpf = "{cpf}"'
+    cursor.execute(deletar)
+    banco.commit()
+    os.system('cls')
+    print('Personal deletadx com sucesso.')
+
 
 def mostrarDadosPersonal():
-    comando = 'select * from personal'
-    return comando
+    consulta_personal = 'SELECT * FROM personal;'
+    cursor.execute(consulta_personal)
+    resultado = cursor.fetchall()
+    for x in resultado:
+        print(x)

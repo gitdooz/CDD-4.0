@@ -1,0 +1,158 @@
+-- MySQL dump 10.13  Distrib 8.0.35, for Win64 (x86_64)
+--
+-- Host: localhost    Database: academiaturmad
+-- ------------------------------------------------------
+-- Server version	8.0.35
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `alunos`
+--
+
+DROP TABLE IF EXISTS `alunos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `alunos` (
+  `nome` varchar(200) NOT NULL,
+  `cpf` char(11) NOT NULL,
+  `matricula` int NOT NULL AUTO_INCREMENT,
+  `telefone` char(11) DEFAULT NULL,
+  `endereco` varchar(200) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`matricula`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `alunos`
+--
+
+LOCK TABLES `alunos` WRITE;
+/*!40000 ALTER TABLE `alunos` DISABLE KEYS */;
+INSERT INTO `alunos` VALUES ('Ozzy Pereira de Menezes','11821626494',1,'81973364496','Rua Teixeira de Melo','menezesosmar5@gmail.com'),('Isa Victoria','90900012356',2,' 8196478759','Rua do Sol','isabellynascimento235@gmail.com');
+/*!40000 ALTER TABLE `alunos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `func`
+--
+
+DROP TABLE IF EXISTS `func`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `func` (
+  `id_funcionario` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) NOT NULL,
+  `cpf` char(11) NOT NULL,
+  `departamento` int DEFAULT NULL,
+  `salario` decimal(8,2) DEFAULT NULL,
+  `quant_filhos` int DEFAULT NULL,
+  PRIMARY KEY (`id_funcionario`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `func`
+--
+
+LOCK TABLES `func` WRITE;
+/*!40000 ALTER TABLE `func` DISABLE KEYS */;
+INSERT INTO `func` VALUES (2,'Icaro Bonfiglio','02332164598',3,2500.00,NULL),(3,'Isabelly Maria','12345678911',2,35000.00,NULL),(4,'Emilly Mynha Dyva','14826597896',3,35000.00,NULL),(5,'Danilo Mamillo','00100200304',3,2000.00,NULL),(6,'Oz o Magico','11821626494',3,1000.00,NULL),(7,'Prefeito','20520620793',3,8000.00,NULL),(8,'Wellington Fofs','00478952631',3,9000.00,NULL),(9,'Gleicinho','20152063656',3,5606.00,NULL),(10,'Andison','98765432110',3,8887.00,NULL);
+/*!40000 ALTER TABLE `func` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `funcionarios`
+--
+
+DROP TABLE IF EXISTS `funcionarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `funcionarios` (
+  `id_funcionario` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(250) NOT NULL,
+  `cpf` char(11) NOT NULL,
+  `departamento` int DEFAULT NULL,
+  `cpf_supervisor` char(11) DEFAULT NULL,
+  `salario` decimal(8,2) DEFAULT NULL,
+  PRIMARY KEY (`id_funcionario`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `funcionarios`
+--
+
+LOCK TABLES `funcionarios` WRITE;
+/*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
+INSERT INTO `funcionarios` VALUES (1,'Gabriel Pachecao','11821626494',3,'77079059415',35000.00),(2,'Icaro Latino Daddy','02332164598',3,'77079059415',2500.00),(3,'Isa Putinha','12345678911',2,'11122255565',35000.00),(4,'Emilly Mynha Dyva','14826597896',3,'89456432110',35000.00),(5,'Danilo Mamillo','00100200304',3,'65132458520',2000.00),(6,'Oz o Magico','11821626494',3,'22022022020',1000.00),(7,'Prefeito','20520620793',3,'14212452565',8000.00),(8,'Wellington Fofs','00478952631',3,'00033355521',9000.00),(9,'Gleicinho','20152063656',3,'66655599987',5606.00),(10,'Andison','98765432110',3,'99987866214',8887.00);
+/*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `modalidades`
+--
+
+DROP TABLE IF EXISTS `modalidades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `modalidades` (
+  `id_mod` int NOT NULL,
+  `nome` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `modalidades`
+--
+
+LOCK TABLES `modalidades` WRITE;
+/*!40000 ALTER TABLE `modalidades` DISABLE KEYS */;
+/*!40000 ALTER TABLE `modalidades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `personal`
+--
+
+DROP TABLE IF EXISTS `personal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `personal` (
+  `cpf` varchar(11) NOT NULL,
+  `cref` char(6) NOT NULL,
+  `nome` varchar(20) DEFAULT NULL,
+  `telefone` char(11) DEFAULT NULL,
+  `email` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `personal`
+--
+
+LOCK TABLES `personal` WRITE;
+/*!40000 ALTER TABLE `personal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `personal` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-11-16 17:23:36
